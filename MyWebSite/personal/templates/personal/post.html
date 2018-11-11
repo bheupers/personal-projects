@@ -1,0 +1,10 @@
+{% extends "personal/base.html" %}
+{% block content %}
+<h3>{{ post.title }}</h3>
+<h6> on {{ post.date }}</h6>
+
+<div class = "container-fluid">
+	{{ post.body|safe|linebreaks}}
+</div>
+<br><br>
+{% endblock %}

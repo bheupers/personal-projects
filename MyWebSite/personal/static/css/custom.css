@@ -1,0 +1,33 @@
+body,
+button,
+input,
+select,
+textarea {
+	font-family: Merriweather, serif;
+	font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: MontSerrat, sands-serif;
+}
+
+a{
+    color: #b20b00;
+}
+
+img.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
