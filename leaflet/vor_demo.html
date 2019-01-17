@@ -18,7 +18,7 @@
     <div id="controlpanel">
       <table width="100%" cellpadding="10"><tr><th>Milieuzones</th><th>Oplaadpalen</th><th>Hoofdroutes</th></tr>
         <tr>
-          <td align="left">
+          <td align="center">
       <input type="radio" name="zone" value="63363" id="00000" onclick="zoneClick(undefined)">Leeg<br>
       <input type="radio" name="zone" value="63363" id="63363" onclick="zoneClick(this.value)">Bestel<br>
       <input type="radio" name="zone" value="63362" id="63362" onclick="zoneClick(this.value)">Vracht<br>
@@ -27,11 +27,14 @@
       <input type="radio" name="zone" value="63324" id="63324" onclick="zoneClick(this.value)">Brom-en snorfiets<br>
       <input type="radio" name="zone" value="63316" id="633616" onclick="zoneClick(this.value)">Touringcar > 2020
           </td>
-          <td align="left">
+          <td align="center">
+            <input type="checkbox" name="oplaadpalen" value="oplaadpalen" onclick="oplaadpalenClick(this.checked)">
+            Toon oplaadpalen
 
           </td>
-          <td align="left">
-
+          <td align="center">
+            <input type="checkbox" name="hoofdroutes" value="hoofdroutes" onclick="hoofroutesClick(this.checked)">
+            Toon hoofdroutes
           </td>
       </tr></table>
     </div>
@@ -42,6 +45,9 @@
     <script>
       var map
       var curLayer
+      var curLayerValue
+      var oplaadpalenLayer
+      var hoofdroutesLayer
 
       map = amaps.createMap({target: 'mapdiv',
         layer: 'standaard',
@@ -57,19 +63,51 @@
       function zoneClick(value) {
           if (typeof curLayer !== "undefined") {
               map.removeLayer(curLayer)
+              curLayer = undefined
+              curLayerValue = undefined
           }
-          if( typeof value !== "undefined") {
+          if( typeof value !== "undefined" && value !== curLayerValue) {
+              curLayerValue = value
               const endpoint = {
                   url: 'https://acc.map.data.amsterdam.nl/maps/milieuzones?id=' + value,
                   layerName: ['milieuzones'],
                   styleName: ''
               };
-              const overlay = amaps.leaflet.overlayLayer('milieuzones', endpoint);
-              curLayer = overlay
-              map.addLayer(overlay);
+              curLayer = amaps.leaflet.overlayLayer('milieuzones', endpoint);
+              map.addLayer(curLayer);
           }
-
       }
+
+      function oplaadpalenClick(checked) {
+          if (checked === false && typeof oplaadpalenLayer !== "undefined") {
+              map.removeLayer(oplaadpalenLayer)
+              oplaadpalenLayer = undefined
+          } else if (checked === true) {
+              const endpoint = {
+                  url: 'https://acc.map.data.amsterdam.nl/maps/oplaadpalen',
+                  layerName: ['oplaadpalen'],
+                  styleName: ''
+              };
+              oplaadpalenLayer = amaps.leaflet.overlayLayer('oplaadpalen', endpoint);
+              map.addLayer(oplaadpalenLayer);
+          }
+      }
+
+      function hoofroutesClick(checked) {
+          if (checked === false && typeof hoofdroutesLayer !== "undefined") {
+              map.removeLayer(hoofdroutesLayer)
+              hoofdroutesLayer = undefined
+          } else if (checked === true) {
+              const endpoint = {
+                  url: 'https://acc.map.data.amsterdam.nl/maps/hoofdroutes',
+                  layerName: ['hoofdroutes'],
+                  styleName: ''
+              };
+              hoofdroutesLayer = amaps.leaflet.overlayLayer('hoofdroetes', endpoint);
+              map.addLayer(hoofdroutesLayer);
+          }
+      }
+
       document.getElementById("63363").checked = "true"
       zoneClick(63316)
     </script>
