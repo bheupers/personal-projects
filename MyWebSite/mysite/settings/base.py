@@ -9,32 +9,15 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
 import os
-import json
-from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 PROJECT_ROOT = BASE_DIR
 
-with open(os.path.join(BASE_DIR, 'secrets.json') ) as f:
-    secrets = json.loads(f.read())
-
-def get_secret(setting, secrets=secrets):
-    '''Get the secret variable or throw exception'''
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = 'Add the {0) variable to to secrets'.format(setting)
-        raise ImproperlyConfigured(error_msg)
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = get_secret('SECRET_KEY')
-
+SECRET_KEY = os.getenv('SECRET_KEY', 'insecure')
 
 # Application definition
 
@@ -156,3 +139,5 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'uploads')
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
 MEDIA_URL = '/uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+
+TRANSLATABLE_MODEL_MODULES = ["personal.models"]
