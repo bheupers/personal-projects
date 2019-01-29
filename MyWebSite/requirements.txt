@@ -1,5 +1,5 @@
 Babel==2.5.0
-Django==1.11.5
+Django==1.11.18
 django-cuser==2017.3.16
 django-debug-toolbar==1.11
 django-formtools==2.0
