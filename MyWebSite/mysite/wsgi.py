@@ -11,7 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-# In development set DJANGO_SETTINGS_MODULE=mysite.settings.dev to enable dev settings
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings.prod")
 
 application = get_wsgi_application()

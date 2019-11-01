@@ -54,10 +54,10 @@
         marker: true,
         search: true,
         zoom: 12,
-        center: {
-            longitude: 4.8937175,
-            latitude: 52.37329259
-        }
+        //center: {
+        //    longitude: 4.8937175,
+        //    latitude: 52.37329259
+        //}
       });
 
       function zoneClick(value) {
@@ -84,11 +84,11 @@
               oplaadpalenLayer = undefined
           } else if (checked === true) {
               const endpoint = {
-                  url: 'https://acc.map.data.amsterdam.nl/maps/oplaadpalen',
-                  layerName: ['oplaadpalen'],
+                  url: 'https://acc.map.data.amsterdam.nl/maps/oplaadpunten',
+                  layerName: ['oplaadpunten'],
                   styleName: ''
               };
-              oplaadpalenLayer = amaps.leaflet.overlayLayer('oplaadpalen', endpoint);
+              oplaadpalenLayer = amaps.leaflet.overlayLayer('oplaadpunten', endpoint);
               map.addLayer(oplaadpalenLayer);
           }
       }
@@ -103,7 +103,7 @@
                   layerName: ['hoofdroutes'],
                   styleName: ''
               };
-              hoofdroutesLayer = amaps.leaflet.overlayLayer('hoofdroetes', endpoint);
+              hoofdroutesLayer = amaps.leaflet.overlayLayer('hoofdroutes', endpoint);
               map.addLayer(hoofdroutesLayer);
           }
       }

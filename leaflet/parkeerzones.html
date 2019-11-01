@@ -24,10 +24,10 @@
             width: 100%;
         }
     </style>
-    <title>Test hoofdroutes oplaadpalen kaart</title>
+    <title>Test parkeerzones</title>
 </head>
 <body>
-<h1>Test  hoofdroutes oplaadpalen kaart</h1>
+<h1>Test parkeerzones</h1>
 <div id="mapid"></div>
 
 <script type="text/javascript">
@@ -49,7 +49,7 @@ var mymap = L.map('mapid').setView([52.381120, 4.882912], 14);
 L.tileLayer('https://acc.{s}.data.amsterdam.nl/{id}/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://data.amsterdam.nl">City Data</a>, Amsterdam City Data',
     minZoom: 7,
-    maxZoom: 18,
+    maxZoom: 20,
     id: 'topo_google',
     // id: 'topo_rd',
     // crs: L.CRS.RD,
@@ -57,46 +57,40 @@ L.tileLayer('https://acc.{s}.data.amsterdam.nl/{id}/{z}/{x}/{y}.png', {
     subdomains: ['t1', 't2', 't3', 't4']
 }).addTo(mymap)
 
-// L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-//     id: 'mapbox.streets',
-//     isBaseLayer : true,
-//     maxBounds: BOUNDS,
-//     //id: 'mapbox.light',
-//     accessToken: 'pk.eyJ1IjoiYmhldXBlcnMiLCJhIjoiY2pldTQ2MzBwMDFuOTMzcHVibHlocm4xYSJ9.nlYnipci2D_K7pA1KkJ_wg'
-// }).addTo(mymap);
 
 
-//L.tileLayer('https://acc.t4.map.data.amsterdam.nl/{id}/{z}/{x}/{y}.png', {
-//    //id: 'topo_rd_light',
-//    tms: true,
-//    minZoom: 8,
-//    maxZoom: 16,
-//    id: 'topo_rd',
-//    isBaseLayer : true,
-//    maxBounds: BOUNDS,
-//    crs: L.CRS.RD
-//}).addTo(mymap);
 
-// var wmsLayer = L.tileLayer.wms('https://acc.map.data.amsterdam.nl/maps/oplaadpalen?version=1.3.0&service=WMS', {
-//     layers: ['oplaadpalen'],
-//     transparent: true,
-//     format: 'image/png',
-//     isBaseLayer : false,
-//     tiled: true,
-//     maxBounds: BOUNDS,
-//     crs: L.CRS.RD
-//     } ).addTo(mymap);
+// var wmsLayer = L.tileLayer.wms('http://localhost:8383/maps/parkeerzones?version=1.3.0&service=WMS', {
+//       layers: [ 'parkeerzones', 'parkeerzones_uitz'],
+//       transparent: true,
+//       format: 'image/png',
+//       isBaseLayer : false,
+//       tiled: true,
+//       maxBounds: BOUNDS,
+//       crs: L.CRS.RD
+//       } ).addTo(mymap);
+//
 
-var wmsLayer = L.tileLayer.wms('http://localhost:8383/maps/brk?version=1.3.0&service=WMS', {
-     layers: [ 'kadastrale_sectie'],
-     transparent: true,
-     format: 'image/png',
-     isBaseLayer : false,
-     tiled: true,
-     maxBounds: BOUNDS,
-     crs: L.CRS.RD
-     } ).addTo(mymap);
+// var wmsLayer = L.tileLayer.wms('http://localhost:8383/maps/parkeerzones?version=1.3.0&service=WMS', {
+//       layers: [ 'parkeerzones'],
+//       transparent: true,
+//       format: 'image/png',
+//       isBaseLayer : false,
+//       tiled: true,
+//       maxBounds: BOUNDS,
+//       crs: L.CRS.RD
+//       } ).addTo(mymap);
+
+
+var wmsLayer = L.tileLayer.wms('https://acc.map.data.amsterdam.nl/maps/parkeerzones?version=1.3.0&service=WMS', {
+      layers: [ 'parkeerzones'],
+      transparent: true,
+      format: 'image/png',
+      isBaseLayer : false,
+      tiled: true,
+      maxBounds: BOUNDS,
+      crs: L.CRS.RD
+      } ).addTo(mymap);
 
 
 </script>
