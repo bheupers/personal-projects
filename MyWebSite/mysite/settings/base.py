@@ -24,7 +24,6 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'insecure')
 # Application definition
 
 INSTALLED_APPS = [
-    'personal',
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -32,6 +31,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'argonauts',
+    'django_u2f',
+    'personal',
 ]
 
 MIDDLEWARE = [
@@ -46,6 +49,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+
+LOGIN_REDIRECT_URL = 'u2f:two-factor-settings'
+LOGIN_URL = 'u2f:login'
 
 TEMPLATES = [
     {

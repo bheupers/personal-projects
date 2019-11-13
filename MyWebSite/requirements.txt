@@ -1,9 +1,13 @@
 Babel==2.7.0
 Django==2.2.6
 django-debug-toolbar==2.0
+django_extensions
 django-formtools==2.1
 django-modeltranslation==0.13.4
 django-phonenumber-field==3.0.1
+-e git+https://github.com/gavinwahl/django-u2f.git@2ec74c60ae7d74027a42e9437b5181c3e50fef98#egg=django-u2f
 pytz==2019.3
+pyOpenSSL
+werkzeug
 six==1.12.0
 sqlparse==0.3.0

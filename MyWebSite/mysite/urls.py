@@ -17,10 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
+import django_u2f.urls
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^i18n/', include('django.conf.urls.i18n')),
+    url(r'^u2f/', include(django_u2f.urls, namespace='u2f')),
     url(r'^', include('personal.urls')),
 ]
 
