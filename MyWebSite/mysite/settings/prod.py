@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from socket import gethostname, gethostbyname
 from .base import *
 
 DEBUG = False

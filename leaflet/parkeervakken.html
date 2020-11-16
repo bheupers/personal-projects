@@ -39,8 +39,10 @@
         //}
       });
       const endpoint = {
-        url: 'http://localhost:8383/maps/parkeervakken?',
-        layerName: ['parkeervakken_reservering'],
+        url: 'https://map.data.amsterdam.nl/maps/parkeervakken?',
+        // url: 'https://acc.map.data.amsterdam.nl/maps/parkeervakken?',
+        // url: 'http://localhost:8383/maps/parkeervakken?',
+        layerName: ['alle_parkeervakken', 'parkeervakken_reservering'],
         styleName: ''
       };
       const overlay = amaps.leaflet.overlayLayer('parkeervakken', endpoint);

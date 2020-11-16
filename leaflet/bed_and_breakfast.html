@@ -24,10 +24,10 @@
             width: 100%;
         }
     </style>
-    <title>Bekendmakingen kaart</title>
+    <title>Bed and Breakfast Quotum</title>
 </head>
 <body>
-<h1>Bekendmakingen kaart</h1>
+<h1>Bed and Breakfast Quotum</h1>
 <div id="mapid"></div>
 
 <script type="text/javascript">
@@ -57,9 +57,10 @@ L.tileLayer('https://acc.{s}.data.amsterdam.nl/{id}/{z}/{x}/{y}.png', {
     subdomains: ['t1', 't2', 't3', 't4']
 }).addTo(mymap)
 
-
-var wmsLayer = L.tileLayer.wms('https://acc.map.data.amsterdam.nl/maps/bekendmakingen?onderwerp=omgevingsvergunning&version=1.3.0&service=WMS', {
-     layers: [ 'bekendmakingen'],
+var wmsLayer = L.tileLayer.wms('https://map.data.amsterdam.nl/maps/bb_quotum?version=1.3.0&service=WMS', {
+// var wmsLayer = L.tileLayer.wms('https://acc.map.data.amsterdam.nl/maps/bb_quotum?version=1.3.0&service=WMS', {
+// var wmsLayer = L.tileLayer.wms('http://localhost:8383/maps/bb_quotum?version=1.3.0&service=WMS', {
+     layers: [ 'bb_quotum'],
      transparent: true,
      format: 'image/png',
      isBaseLayer : false,
